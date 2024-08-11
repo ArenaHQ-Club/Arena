@@ -1,21 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "./redux/Counter/CounterSlice";
+import Navbar from "./Components/Navbar";
 
 function App() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
   return (
     <div className="App">
-      <p>THe counter is: {count}</p>
-      <button
-        onClick={function incr() {
-          dispatch(increment());
-        }}
-      >
-        +
-      </button>
+      <Navbar />
     </div>
   );
 }
