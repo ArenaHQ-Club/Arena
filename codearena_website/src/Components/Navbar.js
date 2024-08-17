@@ -3,7 +3,7 @@ import Hamburger from "hamburger-react";
 import StyleSheet from "reactjs-stylesheet";
 import { colors } from "../Assets/Colors";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
-
+import { useNavigate } from "react-router-dom";
 export default function Navbar({ isHomePage }) {
   const [isOpen, setOpen] = useState(false);
 
@@ -11,6 +11,12 @@ export default function Navbar({ isHomePage }) {
 
   const toggleDarkMode = (checked) => {
     setDarkMode(checked);
+  };
+
+  const navigate = useNavigate();
+
+  const goToAbout = (link) => {
+    navigate(link);
   };
 
   return (
@@ -28,9 +34,9 @@ export default function Navbar({ isHomePage }) {
 
       <div style={styles.right}>
         <li style={styles.menuOptions}>
-          <ul>Home</ul>
-          <ul>About us</ul>
-          <ul>Login</ul>
+          <ul onClick={() => goToAbout("/")}>Home</ul>
+          <ul onClick={() => goToAbout("/about")}>Learning</ul>
+          <ul>Profile</ul>
         </li>
         <DarkModeSwitch
           checked={isDarkMode}
@@ -65,6 +71,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: 600,
     fontSize: 18,
+    cursor: "pointer",
   },
   right: {
     marginRight: 50,
