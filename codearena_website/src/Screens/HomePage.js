@@ -1,6 +1,7 @@
 import React from "react";
 import Stylesheet from "reactjs-stylesheet";
 import logo from "../Assets/Images/Logo.jpg";
+
 import { colors } from "../Assets/Colors";
 export default function HomePage() {
   return (
@@ -73,5 +74,13 @@ const styles = Stylesheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "bolder",
+  },
+  social: {
+    display: "flex",
+    backgroundColor: "green",
+  },
+  img: {
+    height: 30,
+    width: 30,
   },
 });
