@@ -1,23 +1,26 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "./redux/Counter/CounterSlice";
+import Navbar from "./Components/Navbar";
+import StyleSheet from "reactjs-stylesheet";
+import HomePage from "./Screens/HomePage";
 
 function App() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
   return (
-    <div className="App">
-      <p>THe counter is: {count}</p>
-      <button
-        onClick={function incr() {
-          dispatch(increment());
-        }}
-      >
-        +
-      </button>
+    <div className="App" style={styles.app}>
+      <Navbar isHomePage={false} />
+      <HomePage />
     </div>
   );
 }
 
 export default App;
+
+const styles = StyleSheet.create({
+  app: {
+    maxWidth: "100vw",
+    height: "100vh",
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 10,
+  },
+});
