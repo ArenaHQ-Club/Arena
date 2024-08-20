@@ -5,6 +5,8 @@ const cors = require("cors");
 const connection = require("./db");
 const Authentication = require("./routes/Authentication");
 const Teams = require("./routes/TeamCreation");
+const Questions = require("./routes/QuestionCreation");
+const Topics = require("./routes/TopicCreation");
 //database connection
 connection();
 
@@ -18,5 +20,7 @@ app.get("/", (req, res) => {
 
 app.use(Authentication);
 app.use(Teams);
+app.use(Questions);
+app.use(Topics);
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}`));
