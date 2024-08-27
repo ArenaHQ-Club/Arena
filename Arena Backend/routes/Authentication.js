@@ -12,15 +12,16 @@ router.post("/signup", async (req, res) => {
     }
 
     const user = await User.findOne({ email: req.body.email });
+
     if (user) {
       return res.status(409).send({ message: "User already exists" });
     }
 
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
     const hashPassword = await bcrypt.hash(req.body.password, salt);
-    console.log("h2");
+
     await new User({ ...req.body, password: hashPassword }).save();
-    console.log("h1");
+
     res.status(200).send("User create succesfully");
   } catch (err) {
     res.status(500).send({ message: "Internal Server error" });

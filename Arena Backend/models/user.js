@@ -5,11 +5,11 @@ const passwordComplexity = require("joi-password-complexity");
 
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
-  username: { type: String, required: true },
+
   team: { type: mongoose.Schema.Types.ObjectId, ref: "Team" },
   password: { type: String, required: true },
   location: { type: String },
-  college: { type: String, required: true },
+  college: { type: String },
   socials: {
     type: Map,
     of: String,
@@ -89,13 +89,13 @@ const User = mongoose.model("user", userSchema);
 const validate = (data) => {
   const schema = Joi.object({
     email: Joi.string().email().required().label("Email: "),
-    username: Joi.string().required().label("Username: "),
+
     team: Joi.string()
       .regex(/^[0-9a-fA-F]{24}$/)
       .label("Team"), // Validate ObjectId format
     password: passwordComplexity().required().label("Password: "),
     location: Joi.string().allow("").label("Location: "),
-    college: Joi.string().required().label("College: "),
+    college: Joi.string().label("College: "),
     socials: Joi.object({
       github: Joi.string().allow("").label("GitHub: "),
       linkedin: Joi.string().allow("").label("LinkedIn: "),
