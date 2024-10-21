@@ -35,7 +35,7 @@ export default function Navbar({ isHomePage }) {
       <div style={styles.right}>
         <li style={styles.menuOptions}>
           <ul onClick={() => goToAbout("/")}>Home</ul>
-          <ul onClick={() => goToAbout("/about")}>Learning</ul>
+          <ul onClick={() => goToAbout("/topics")}>Learning</ul>
           <ul>Profile</ul>
         </li>
         <DarkModeSwitch

@@ -28,4 +28,23 @@ router.get("/topics", async (req, res) => {
   }
 });
 
+router.get("/topics/:id", async (req, res) => {
+  try {
+    const topicId = req.params.id;
+
+    // Find the topic by ID and populate questions (assuming a 'questions' field exists)
+    const topic = await Topics.findById(topicId).populate("questions");
+
+    if (!topic) {
+      return res.status(404).json({ message: "Topic not found" });
+    }
+
+    // Send back the list of questions
+    res.status(200).json(topic.questions);
+  } catch (error) {
+    console.error("Error fetching topic questions:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 module.exports = router;

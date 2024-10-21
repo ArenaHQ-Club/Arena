@@ -11,10 +11,13 @@ router.post("/question", async (req, res) => {
     }
 
     // await new Questions({ ...req.body }).save();
+
     const question = new Questions({ ...req.body });
+
     await question.save();
 
     const topicName = req.body.topic;
+
     if (topicName) {
       let topic = await Topics.findOne({ name: topicName });
       if (!topic) {

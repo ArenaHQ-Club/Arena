@@ -5,14 +5,28 @@ import Navbar from "./Components/Navbar";
 import StyleSheet from "reactjs-stylesheet";
 import HomePage from "./Screens/HomePage";
 import LearningPage from "./Screens/LearningPage";
+import QuestionPage from "./Screens/QuestionScreen";
+import SignupPage from "./Screens/SignupPage";
+import Profile from "./Screens/Profile";
 function App() {
   return (
     <Router>
       <div className="App" style={styles.app}>
         <Navbar isHomePage={false} />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<LearningPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route
+            path="/"
+            element={
+              <div>
+                <HomePage />
+                <LearningPage />
+              </div>
+            }
+          />
+          <Route path="/topics" element={<LearningPage />} />
+          <Route path="/topics/:name" element={<QuestionPage />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         {/* <HomePage /> */}
       </div>

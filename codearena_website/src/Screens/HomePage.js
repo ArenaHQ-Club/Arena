@@ -97,13 +97,13 @@ import React from "react";
 import Stylesheet from "reactjs-stylesheet";
 import logo from "../Assets/Images/Logo.jpg";
 import { colors } from "../Assets/Colors";
-import DifficultyLevel from "../Components/DifficultyLevel";
-import Egg from "../Assets/Images/egg.png";
-import Viking from "../Assets/Images/viking.png";
-import Veteran from "../Assets/Images/veteran.png";
-import Business from "../Assets/Images/businessman.png";
-
+import { useNavigate } from "react-router-dom";
 export default function HomePage() {
+  const navigate = useNavigate();
+
+  const goToAbout = (link) => {
+    navigate(link);
+  };
   return (
     <div style={styles.container}>
       <div style={styles.contentContainer}>
@@ -116,29 +116,13 @@ export default function HomePage() {
             We've crafted a clear, step-by-step roadmap to help you conquer Data
             Structures and Algorithms.
           </div>
-          <div style={styles.btn}>Get started</div>
+          <div style={styles.btn} onClick={() => goToAbout("/topics")}>
+            Get started
+          </div>
         </div>
         <div style={styles.right}>
           <img src={logo} style={styles.image} alt="Logo" />
         </div>
-      </div>
-      <div style={styles.difficultyOptions}>
-        <DifficultyLevel img={Egg} text="Rookie Rumble" color={colors.rookie} />
-        <DifficultyLevel
-          img={Viking}
-          text="Warrior's Way"
-          color={colors.warrior}
-        />
-        <DifficultyLevel
-          img={Veteran}
-          text="Veteran's Vault"
-          color={colors.veteran}
-        />
-        <DifficultyLevel
-          img={Business}
-          text="Training Grounds"
-          color={colors.training}
-        />
       </div>
     </div>
   );
@@ -149,12 +133,14 @@ const styles = Stylesheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    height: "95%",
+    justifyContent: "center",
+    height: "100vh",
   },
 
   contentContainer: {
     display: "flex",
     justifyContent: "space-around",
+    alignContent: "center",
     width: "100%",
     marginBottom: 20,
   },
@@ -200,18 +186,6 @@ const styles = Stylesheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "bolder",
-  },
-
-  difficultyOptions: {
-    marginTop: 20,
-    height: "100%",
-    width: "100%",
-
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "space-around",
-    paddingTop: 30,
-    paddingRight: 60,
-    paddingLeft: 60,
+    cursor: "pointer",
   },
 });

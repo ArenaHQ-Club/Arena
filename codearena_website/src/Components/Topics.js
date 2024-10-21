@@ -2,33 +2,45 @@ import React, { useState } from "react";
 import Stylesheet from "reactjs-stylesheet";
 
 import Checkbox from "@mui/material/Checkbox";
-
-export default function Topics() {
+import { colors } from "../Assets/Colors";
+import { useNavigate } from "react-router-dom";
+export default function Topics({
+  id,
+  topicName,
+  topicInfo,
+  topicHours,
+  topicPoints,
+  color,
+}) {
   const [isChecked, setIsChecked] = useState(false);
 
+  const navigate = useNavigate();
+
+  const goToAbout = (link, state) => {
+    navigate(link, { state });
+  };
   const handleContainerClick = () => {
-    window.open("https://leetcode.com", "_blank"); // Open leetcode.com in a new tab
+    goToAbout(`/topics/${topicName}`, { id });
   };
   return (
     <div
       style={{
         ...styles.container,
         opacity: isChecked ? 0.3 : 1, // Reduce opacity if checked
+        backgroundColor: color,
       }}
     >
-      <div style={styles.questionType}>EASY</div>
       <div style={styles.topic} onClick={handleContainerClick}>
-        Insertion in arrays
+        {topicName}
       </div>
       <div style={styles.description} onClick={handleContainerClick}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut.
+        {topicInfo}
       </div>
       <div style={styles.line}></div>
       <div style={styles.bottom}>
         <div style={styles.left}>
-          <div style={styles.time}>1 hr 30 mins</div>
-          <div style={styles.points}>8 pts</div>
+          <div style={styles.time}>{topicHours}</div>
+          <div style={styles.points}>{topicPoints}</div>
         </div>
 
         <div style={styles.right}>
@@ -53,7 +65,7 @@ const styles = Stylesheet.create({
   container: {
     height: 250,
     width: 250,
-    backgroundColor: "green",
+
     borderRadius: 10,
     padding: 20,
   },
@@ -81,6 +93,7 @@ const styles = Stylesheet.create({
     marginTop: 10,
     color: "#d3d3d3",
     fontWeight: 400,
+    color: "white",
   },
 
   time: {

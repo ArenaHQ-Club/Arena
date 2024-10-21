@@ -8,8 +8,9 @@ const userSchema = new mongoose.Schema({
 
   team: { type: mongoose.Schema.Types.ObjectId, ref: "Team" },
   password: { type: String, required: true },
-  location: { type: String },
-  college: { type: String },
+  //location: { type: String },
+  //college: { type: String },
+  // add points
   socials: {
     type: Map,
     of: String,
