@@ -1,6 +1,6 @@
 import React from "react";
 import Stylesheet from "reactjs-stylesheet";
-
+import { colors } from "../Assets/Colors";
 export default function DifficultyLevel({ img, text, color, onClick }) {
   return (
     <div style={styles.container}>

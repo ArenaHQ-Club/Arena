@@ -33,7 +33,7 @@ export default function LearningPage() {
     <div style={styles.container}>
       <div style={styles.difficultyOptions}>
         <DifficultyLevel
-          img={new1}
+          img={Egg}
           text="Rookie Rumble"
           color={colors.rookie}
           onClick={() =>
@@ -41,7 +41,7 @@ export default function LearningPage() {
           }
         />
         <DifficultyLevel
-          img={new2}
+          img={Viking}
           text="Warrior's Way"
           color={colors.warrior}
           onClick={() =>
@@ -49,7 +49,7 @@ export default function LearningPage() {
           }
         />
         <DifficultyLevel
-          img={new3}
+          img={Veteran}
           text="Veteran's Vault"
           color={colors.veteran}
           onClick={() =>

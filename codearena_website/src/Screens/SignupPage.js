@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import StyleSheet from "reactjs-stylesheet";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +9,6 @@ const SignupPage = () => {
     password: "",
   });
 
-  // Step 3: Handle Form Input Changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -17,22 +17,19 @@ const SignupPage = () => {
     }));
   };
 
-  // Step 4: Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Step 5: Make the POST request using axios
       const response = await axios.post(
         "http://localhost:8080/signup",
         formData
       );
 
-      // Step 6: Handle the response
       if (response.status === 200) {
         alert("User created successfully");
+        goToAbout("/home");
       }
     } catch (error) {
-      // Handle errors
       if (error.response && error.response.data) {
         alert(error.response.data.message);
       } else {
@@ -41,17 +38,21 @@ const SignupPage = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const goToAbout = (link) => {
+    navigate(link);
+  };
+
   return (
     <div style={styles.signupPage}>
       <div style={styles.leftContainer}>
         <h1 style={styles.heading}>Welcome to Code Arena HQ!</h1>
-        <p style={styles.subheading}>where practice makes perfect</p>
+        <p style={styles.subheading}>Where practice makes perfect</p>
       </div>
       <div style={styles.rightContainer}>
         <h2 style={styles.formHeading}>Create Account</h2>
-
-        {/* Step 7: Update the form to call handleChange and handleSubmit */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={styles.form}>
           <input
             type="text"
             name="email"
@@ -72,9 +73,11 @@ const SignupPage = () => {
             Sign Up
           </button>
         </form>
-
         <p style={styles.loginLink}>
-          Already have an account? <a href="/login">Login</a>
+          Already have an account?{" "}
+          <a href="/login" style={styles.link}>
+            Login
+          </a>
         </p>
       </div>
     </div>
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
   signupPage: {
     display: "flex",
     height: "100vh",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#f0f4f8",
   },
   leftContainer: {
     flex: 1,
@@ -96,8 +99,18 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
-    padding: "0 20px",
+    alignItems: "flex-start",
+    padding: "0 40px",
+  },
+  heading: {
+    fontSize: "3rem",
+    margin: 0,
+    textAlign: "left",
+  },
+  subheading: {
+    fontSize: "1.2rem",
+    marginTop: "10px",
+    textAlign: "left",
   },
   rightContainer: {
     flex: 1,
@@ -105,42 +118,42 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
-    padding: "0 40px",
-  },
-  heading: {
-    fontSize: "2.5rem",
-    marginBottom: "10px",
-  },
-  subheading: {
-    fontSize: "1.2rem",
-    marginBottom: "20px",
+    padding: "40px 60px",
   },
   formHeading: {
-    fontSize: "1.8rem",
+    fontSize: "2rem",
     marginBottom: "20px",
+    textAlign: "left",
+  },
+  form: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
   },
   input: {
-    width: "100%",
-    padding: "10px",
-    marginBottom: "15px",
-    borderRadius: "5px",
-    border: "1px solid #ddd",
+    marginBottom: "20px",
+    padding: "15px",
     fontSize: "1rem",
+    border: "1px solid #ddd",
+    borderRadius: "5px",
+    width: "100%",
   },
   signupButton: {
-    width: "100%",
-    padding: "10px 0",
+    padding: "15px",
+    fontSize: "1.1rem",
     backgroundColor: "#e52d27",
     color: "white",
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
-    fontSize: "1rem",
-    marginBottom: "20px",
+    width: "100%",
   },
   loginLink: {
-    fontSize: "1rem",
-    color: "#555",
+    marginTop: "20px",
+    textAlign: "center",
+  },
+  link: {
+    color: "#e52d27",
+    textDecoration: "none",
   },
 });
