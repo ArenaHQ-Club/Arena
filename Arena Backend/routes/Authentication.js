@@ -3,6 +3,7 @@ const { Router } = require("express");
 const { User, validate } = require("../models/user");
 const bcrypt = require("bcrypt");
 const { Questions } = require("../models/questions");
+const jwt = require("jsonwebtoken");
 
 router.post("/signup", async (req, res) => {
   try {
@@ -11,20 +12,26 @@ router.post("/signup", async (req, res) => {
     if (error) {
       return res.status(400).send({ message: error.details[0].message });
     }
-    console.log("hi");
+
     const user = await User.findOne({ email: req.body.email });
-    console.log("hi");
+
     if (user) {
       return res.status(409).send({ message: "User already exists" });
     }
-    console.log("hi");
 
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    await new User({ ...req.body, password: hashPassword }).save();
-    console.log("hi");
-    res.status(200).send("User create succesfully");
+    const newUser = await new User({
+      ...req.body,
+      password: hashPassword,
+    }).save();
+    const token = jwt.sign(
+      { userId: newUser._id },
+      process.env.JWT_PRIVATE_KEY
+    );
+
+    res.send({ token });
   } catch (err) {
     res.status(500).send({ message: err });
   }
@@ -51,8 +58,9 @@ router.post("/signin", async (req, res) => {
       return res.status(401).send({ message: "Invalid Email or Password" });
     }
 
-    const token = user.generateAuthToken();
-    res.status(200).send({ data: token, message: "Logged in Succesfully" });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_PRIVATE_KEY);
+
+    res.send({ token });
   } catch (err) {
     res.status(500).send({ message: "Internal Server error" });
   }

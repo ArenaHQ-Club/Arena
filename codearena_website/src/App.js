@@ -12,6 +12,7 @@ import LearningPage from "./Screens/LearningPage";
 import QuestionPage from "./Screens/QuestionScreen";
 import SignupPage from "./Screens/SignupPage";
 import Profile from "./Screens/Profile";
+import LoginPage from "./Screens/LoginPage";
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
       <div className="App" style={styles.app}>
         <Navbar />
         <Routes>
-          {/* <Route path="/" element={<SignupPage />} />
-          <Route path="/signup" element={<SignupPage />} /> */}
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<SignupPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/signin" element={<LoginPage />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
           <Route path="/home" element={<HomePage />} />
           <Route path="/topics" element={<LearningPage />} />
           <Route path="/topics/:name" element={<QuestionPage />} />

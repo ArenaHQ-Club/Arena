@@ -3,79 +3,80 @@ import Stylesheet from "reactjs-stylesheet";
 
 export default function Profile() {
   return (
-    <div style={styles.profileContainer}>
-      <div style={styles.profileSidebar}>
-        <div style={styles.profileInfo}>
-          <div style={styles.profileHeader}>
-            <img
-              style={styles.profilePic}
-              src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?size=338&ext=jpg&ga=GA1.1.2113030492.1729468800&semt=ais_hybrid" // Replace with your logo
-              alt="Profile"
-            />
-            <div style={styles.profileTextContainer}>
-              <h2 style={styles.profileName}>Name</h2>
-              <p style={styles.profileText}>Team_id</p>
-              <p style={styles.profileText}>#username</p>
-            </div>
-          </div>
-        </div>
-        <div style={styles.profileContact}>
-          <p style={styles.contactText}>Email</p>
-          <div style={styles.socialIcons}>
-            <a href="#" style={styles.icon}>
-              <i className="fab fa-github"></i>
-            </a>
-            <a href="#" style={styles.icon}>
-              <i className="fab fa-linkedin"></i>
-            </a>
-            <a href="#" style={styles.icon}>
-              <i className="fas fa-envelope"></i>
-            </a>
-            <a href="#" style={styles.icon}>
-              <i className="fas fa-globe"></i>
-            </a>
-          </div>
-        </div>
-      </div>
+    // <div style={styles.profileContainer}>
+    //   <div style={styles.profileSidebar}>
+    //     <div style={styles.profileInfo}>
+    //       <div style={styles.profileHeader}>
+    //         <img
+    //           style={styles.profilePic}
+    //           src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?size=338&ext=jpg&ga=GA1.1.2113030492.1729468800&semt=ais_hybrid" // Replace with your logo
+    //           alt="Profile"
+    //         />
+    //         <div style={styles.profileTextContainer}>
+    //           <h2 style={styles.profileName}>Name</h2>
+    //           <p style={styles.profileText}>Team_id</p>
+    //           <p style={styles.profileText}>#username</p>
+    //         </div>
+    //       </div>
+    //     </div>
+    //     <div style={styles.profileContact}>
+    //       <p style={styles.contactText}>Email</p>
+    //       <div style={styles.socialIcons}>
+    //         <a href="#" style={styles.icon}>
+    //           <i className="fab fa-github"></i>
+    //         </a>
+    //         <a href="#" style={styles.icon}>
+    //           <i className="fab fa-linkedin"></i>
+    //         </a>
+    //         <a href="#" style={styles.icon}>
+    //           <i className="fas fa-envelope"></i>
+    //         </a>
+    //         <a href="#" style={styles.icon}>
+    //           <i className="fas fa-globe"></i>
+    //         </a>
+    //       </div>
+    //     </div>
+    //   </div>
 
-      <div style={styles.profileContent}>
-        <div style={styles.progressSection}>
-          <h2 style={styles.sectionTitle}>Progress</h2>
-          <div style={styles.progressCircles}>
-            <div style={styles.circleContainer}>
-              <div style={styles.circle}>
-                <p style={styles.percentageText}>0%</p>
-              </div>
-              <p style={styles.circleTitle}>Rookie Rumble</p>
-            </div>
-            <div style={styles.circleContainer}>
-              <div style={styles.circle}>
-                <p style={styles.percentageText}>0%</p>
-              </div>
-              <p style={styles.circleTitle}>Warrior's Way</p>
-            </div>
-            <div style={styles.circleContainer}>
-              <div style={styles.circle}>
-                <p style={styles.percentageText}>0%</p>
-              </div>
-              <p style={styles.circleTitle}>Veteran's Vault</p>
-            </div>
-          </div>
-        </div>
+    //   <div style={styles.profileContent}>
+    //     <div style={styles.progressSection}>
+    //       <h2 style={styles.sectionTitle}>Progress</h2>
+    //       <div style={styles.progressCircles}>
+    //         <div style={styles.circleContainer}>
+    //           <div style={styles.circle}>
+    //             <p style={styles.percentageText}>0%</p>
+    //           </div>
+    //           <p style={styles.circleTitle}>Rookie Rumble</p>
+    //         </div>
+    //         <div style={styles.circleContainer}>
+    //           <div style={styles.circle}>
+    //             <p style={styles.percentageText}>0%</p>
+    //           </div>
+    //           <p style={styles.circleTitle}>Warrior's Way</p>
+    //         </div>
+    //         <div style={styles.circleContainer}>
+    //           <div style={styles.circle}>
+    //             <p style={styles.percentageText}>0%</p>
+    //           </div>
+    //           <p style={styles.circleTitle}>Veteran's Vault</p>
+    //         </div>
+    //       </div>
+    //     </div>
 
-        <div style={styles.topicsSection}>
-          <h2 style={styles.sectionTitle}>Topics covered</h2>
-          <div style={styles.topicsGrid}>
-            <div style={styles.topic}>Arrays</div>
-            <div style={styles.topic}>Strings</div>
-            <div style={styles.topic}>Stack</div>
-            <div style={styles.topic}>Greedy</div>
-            <div style={styles.topic}>Heap</div>
-            <div style={styles.topic}>Math</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    //     <div style={styles.topicsSection}>
+    //       <h2 style={styles.sectionTitle}>Topics covered</h2>
+    //       <div style={styles.topicsGrid}>
+    //         <div style={styles.topic}>Arrays</div>
+    //         <div style={styles.topic}>Strings</div>
+    //         <div style={styles.topic}>Stack</div>
+    //         <div style={styles.topic}>Greedy</div>
+    //         <div style={styles.topic}>Heap</div>
+    //         <div style={styles.topic}>Math</div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div></div>
   );
 }
 

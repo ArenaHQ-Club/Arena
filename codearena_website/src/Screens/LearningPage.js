@@ -57,6 +57,14 @@ export default function LearningPage() {
           }
         />
         {/* <DifficultyLevel
+          img={Viking}
+          text="Founders forge"
+          color={colors.warrior}
+          onClick={() =>
+            fetchDifficultyData(difficultyID.warriors_way, colors.warrior)
+          }
+        /> */}
+        {/* <DifficultyLevel
           img={Business}
           text="Training Grounds"
           color={colors.training}

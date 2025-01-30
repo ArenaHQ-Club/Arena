@@ -8,6 +8,7 @@ const Teams = require("./routes/TeamCreation");
 const Questions = require("./routes/QuestionCreation");
 const Topics = require("./routes/TopicCreation");
 const Difficulty = require("./routes/DifficultyCreation");
+const Article = require("./routes/ArticlesCreation");
 //database connection
 connection();
 
@@ -24,6 +25,7 @@ app.use(Teams);
 app.use(Questions);
 app.use(Topics);
 app.use(Difficulty);
+app.use(Article);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}`));

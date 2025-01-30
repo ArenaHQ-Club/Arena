@@ -22,14 +22,17 @@ export default function Navbar({ isHomePage }) {
   return (
     <div style={styles.container}>
       <div style={styles.left}>
-        <Hamburger
+        {/* hamburger menu  */}
+        {/* <Hamburger
           toggled={isOpen}
           toggle={setOpen}
           color="white"
           size={22}
           disabled={isHomePage ? true : false}
-        />
-        <div style={styles.logo}>ArenaHQ</div>
+        /> */}
+        <div style={styles.logo} onClick={() => goToAbout("/home")}>
+          ArenaHQ
+        </div>
       </div>
 
       <div style={styles.right}>
@@ -38,12 +41,13 @@ export default function Navbar({ isHomePage }) {
           <ul onClick={() => goToAbout("/topics")}>Learning</ul>
           <ul onClick={() => goToAbout("/profile")}>Profile</ul>
         </li>
-        <DarkModeSwitch
+        {/* //darkmode toggle switch */}
+        {/* <DarkModeSwitch
           checked={isDarkMode}
           onChange={toggleDarkMode}
           size={30}
           sunColor="white"
-        />
+        /> */}
       </div>
     </div>
   );
@@ -86,5 +90,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bolder",
     fontSize: 22,
+    cursor: "pointer",
   },
 });
