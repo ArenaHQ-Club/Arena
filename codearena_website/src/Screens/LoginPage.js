@@ -28,7 +28,8 @@ const LoginPage = () => {
     try {
       const response = await axios.post(
         "http://localhost:8080/signin",
-        formData
+        formData,
+        { withCredentials: true }
       );
 
       if (response.status === 200) {

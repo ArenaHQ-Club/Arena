@@ -20,7 +20,8 @@ export default function LearningPage() {
   const fetchDifficultyData = async (difficulty, selectedColor) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/difficulty/${difficulty}`
+        `http://localhost:8080/difficulty/${difficulty}`,
+        { withCredentials: true } // Ensure the authentication cookie is sent
       );
       setTopics(response.data);
       setColor(selectedColor);

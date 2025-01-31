@@ -9,12 +9,19 @@ const Questions = require("./routes/QuestionCreation");
 const Topics = require("./routes/TopicCreation");
 const Difficulty = require("./routes/DifficultyCreation");
 const Article = require("./routes/ArticlesCreation");
+const cookieParser = require("cookie-parser");
 //database connection
 connection();
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Adjust this to your frontend's origin
+    credentials: true, // Allow cookies to be sent
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("This is the main page");

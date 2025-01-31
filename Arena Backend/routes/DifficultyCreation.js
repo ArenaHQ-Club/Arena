@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { Difficulty } = require("../models/difficulty");
 const { Topics } = require("../models/topics");
+const { cookieJWTAuth } = require("../middleware/CookieJWTAuth");
 
-router.get("/difficulty/:id", async (req, res) => {
+router.get("/difficulty/:id", cookieJWTAuth, async (req, res) => {
   try {
     // Step 1: Fetch the Difficulty document by ID
     const difficulty = await Difficulty.findById(req.params.id).populate({

@@ -31,7 +31,9 @@ router.post("/signup", async (req, res) => {
       process.env.JWT_PRIVATE_KEY
     );
 
-    res.send({ token });
+    res.cookie("token", token, { httpOnly: true });
+
+    return res.send(token);
   } catch (err) {
     res.status(500).send({ message: err });
   }
@@ -59,7 +61,7 @@ router.post("/signin", async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_PRIVATE_KEY);
-
+    res.cookie("token", token, { httpOnly: true });
     res.send({ token });
   } catch (err) {
     res.status(500).send({ message: "Internal Server error" });
