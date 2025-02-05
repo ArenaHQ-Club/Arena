@@ -9,6 +9,7 @@ const Questions = require("./routes/QuestionCreation");
 const Topics = require("./routes/TopicCreation");
 const Difficulty = require("./routes/DifficultyCreation");
 const Article = require("./routes/ArticlesCreation");
+const Quiz = require("./routes/QuizCreation");
 const cookieParser = require("cookie-parser");
 //database connection
 connection();
@@ -33,6 +34,7 @@ app.use(Questions);
 app.use(Topics);
 app.use(Difficulty);
 app.use(Article);
+app.use(Quiz);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}`));

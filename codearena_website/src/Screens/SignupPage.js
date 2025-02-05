@@ -76,7 +76,7 @@ const SignupPage = () => {
         </form>
         <p style={styles.loginLink}>
           Already have an account?{" "}
-          <a href="/login" style={styles.link}>
+          <a href="/signin" style={styles.link}>
             Login
           </a>
         </p>

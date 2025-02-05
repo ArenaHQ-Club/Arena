@@ -11,7 +11,9 @@ function QuestionPage() {
 
   const fetchQuestionData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/topics/${id}`);
+      const response = await axios.get(`http://localhost:8080/topics/${id}`, {
+        withCredentials: true,
+      });
       setQuestions(response.data);
     } catch (error) {
       console.error("Error fetching difficulty data:", error);

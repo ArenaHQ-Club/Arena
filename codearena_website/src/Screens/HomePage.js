@@ -3,6 +3,7 @@ import Stylesheet from "reactjs-stylesheet";
 import logo from "../Assets/Images/Logo.jpg";
 import { colors } from "../Assets/Colors";
 import { useNavigate } from "react-router-dom";
+
 export default function HomePage() {
   const navigate = useNavigate();
 

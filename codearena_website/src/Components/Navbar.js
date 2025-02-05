@@ -39,6 +39,7 @@ export default function Navbar({ isHomePage }) {
         <li style={styles.menuOptions}>
           <ul onClick={() => goToAbout("/home")}>Home</ul>
           <ul onClick={() => goToAbout("/topics")}>Learning</ul>
+          <ul onClick={() => goToAbout("/quiz")}>Quiz</ul>
           <ul onClick={() => goToAbout("/profile")}>Profile</ul>
         </li>
         {/* //darkmode toggle switch */}

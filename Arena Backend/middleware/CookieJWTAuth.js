@@ -5,6 +5,7 @@ require("dotenv").config();
 
 exports.cookieJWTAuth = (req, res, next) => {
   const token = req.cookies.token;
+
   try {
     const user = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
     req.user = user;
