@@ -10,7 +10,16 @@ router.post("/article", async (req, res) => {
       return res.status(400).send({ message: error.details[0].message });
     }
 
-    // await new Questions({ ...req.body }).save();
+    // Check if an article already exists with the given questionId
+    const existingArticle = await Article.findOne({
+      questionId: req.body.questionId,
+    });
+
+    if (existingArticle) {
+      return res
+        .status(409)
+        .send({ message: "Article already exists for this questionId." });
+    }
 
     const article = new Article({ ...req.body });
 
