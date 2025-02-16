@@ -59,27 +59,20 @@ router.get("/article/:questionId", async (req, res) => {
 
 router.post("/article/id", async (req, res) => {
   try {
-    console.log("Received Request Body:", req.body);
     const { ques } = req.body;
 
     if (!ques) {
       return res.status(400).json({ error: "Question text is required" });
     }
 
-    console.log("Searching for question:", ques);
-
     let que = await Questions.findOne({ question: ques });
-
-    console.log("MongoDB Response:", que);
 
     if (!que) {
       return res.status(404).send({ message: "No such question exists." });
     }
 
-    console.log("Found Question ID:", que._id);
     res.status(200).send({ questionId: que._id });
   } catch (error) {
-    console.error("Error Details:", error); // Log detailed error
     res.status(500).json({ error: "Error fetching questionId" });
   }
 });
