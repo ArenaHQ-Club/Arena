@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Question from "../Components/Question";
+import { useNavigate } from "react-router-dom";
 
 function QuestionPage() {
   const location = useLocation();
@@ -18,6 +19,12 @@ function QuestionPage() {
     } catch (error) {
       console.error("Error fetching difficulty data:", error);
     }
+  };
+
+  const navigate = useNavigate();
+
+  const goToAbout = (link) => {
+    navigate(link);
   };
 
   useEffect(() => {
@@ -46,7 +53,9 @@ function QuestionPage() {
                 </td> */}
                 <td style={styles.tableCellQuestion}>{question.question}</td>
                 <td style={styles.tableCell}>
-                  <a style={styles.link}>Link</a>
+                  <a style={styles.link} onClick={() => goToAbout("/home")}>
+                    Link
+                  </a>
                 </td>
                 <td style={styles.tableCell}>
                   <button
