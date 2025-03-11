@@ -1,0 +1,172 @@
+.site-main-colour {
+  background: linear-gradient(135deg, #e52d27 0%, #b31217 100%);
+}
+.text-colour-red {
+  color: #b31217;
+}
+.login-colour {
+  color: #004b8e;
+}
+.login-text-colour {
+  color: #ee222b;
+}
+.home-colour-second {
+  color: #3f3d56;
+}
+.home-colour-third {
+  color: #2f2e41;
+}
+/* vars */
+.site-main-colour,.home-btn {
+  background: linear-gradient(135deg, #e52d27 0%, #b31217 100%);
+  
+}
+.text-colour-red {
+  color: #b31217;
+}
+
+.btn-danger {
+  background-color: #ff3131;
+}
+
+
+/* Navbar */
+.navbar-brand {
+  margin-right: 50rem;
+}
+.rounded-navbar {
+    border-radius:10px;
+ 
+}
+.navLogo {
+    border-radius:25.5px;
+ 
+}
+
+/* responsivenes */
+@media only screen and (max-width: 770px) {
+  .quiz-card {
+    padding: 6px !important ;
+    margin: 0px !important;
+  }
+  .quiz-body {
+    margin: 5px !important;
+    text-align: center;
+  }
+  .quiz-doodle {
+    padding: 5px !important ;
+    margin: 4px !important;
+  }
+  .quiz-code-input {
+    margin-left: 15px !important;
+    width: 90% !important;
+  }
+  .quiz-button {
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home-content1,.home-content2 {
+    text-align: center !important;
+    /* justify-content: unset !important;  */
+    
+  } 
+  .main-title2-home{
+    margin:0px !important;
+  }
+  .main-subtitle2-home{
+    margin:0px !important;
+  }
+  .mobile-image2{
+    display:none;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+  }
+  .home-content1{
+    padding:0px !important;
+  }
+  .container2-content{
+    margin-right:25px !important;
+  }
+ 
+  .button-container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px !important;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  .img-size {
+    height: 180px;
+  }
+  .card-img-center {
+    text-align: center;
+  }
+  .learnings-cards {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .App {
+    padding: 5px 5px !important;
+  }
+  .signup-page,
+  .loginPage {
+    padding: 0px;
+    margin-top: 1rem;
+    justify-content: unset !important;
+    align-items: flex-start !important;
+
+    & .row {
+      padding: 0rem !important;
+      margin: 0.3rem !important;
+
+      & .contentbox {
+        padding: 0.5rem !important;
+        overflow-y: auto;
+      }
+    }
+
+    .main-title,
+    .main-subtitle {
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 781px) {
+  .App {
+    padding: 5px 5px !important;
+  }
+  .loginPage {
+    padding: 0px;
+    margin-top: 1rem;
+    justify-content: unset !important;
+    align-items: flex-start !important;
+
+    & .row {
+      padding: 0.3rem !important;
+      margin: 0.1rem !important;
+
+      & .contentbox-login {
+        padding: 1rem !important;
+        overflow-y: auto;
+      }
+    }
+
+    .main-title-login,
+    .main-subtitle-login {
+      text-align: center;
+    }
+  }
+}
