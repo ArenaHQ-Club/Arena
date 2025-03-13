@@ -3,6 +3,7 @@ const { Router } = require("express");
 const { User, validate } = require("../models/user");
 const bcrypt = require("bcrypt");
 const { Questions } = require("../models/questions");
+const jwt = require("jsonwebtoken");
 
 router.post("/signup", async (req, res) => {
   try {
@@ -21,11 +22,20 @@ router.post("/signup", async (req, res) => {
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
     const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-    await new User({ ...req.body, password: hashPassword }).save();
+    const newUser = await new User({
+      ...req.body,
+      password: hashPassword,
+    }).save();
+    const token = jwt.sign(
+      { userId: newUser._id },
+      process.env.JWT_PRIVATE_KEY
+    );
+    //security issue plz fix later
+    res.cookie("token", token, { httpOnly: true });
 
-    res.status(200).send("User create succesfully");
+    return res.send(token);
   } catch (err) {
-    res.status(500).send({ message: "Internal Server error" });
+    res.status(500).send({ message: err });
   }
 });
 
@@ -50,11 +60,35 @@ router.post("/signin", async (req, res) => {
       return res.status(401).send({ message: "Invalid Email or Password" });
     }
 
-    const token = user.generateAuthToken();
-    res.status(200).send({ data: token, message: "Logged in Succesfully" });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_PRIVATE_KEY);
+    res.cookie("token", token, { httpOnly: true });
+    res.send({ token });
   } catch (err) {
     res.status(500).send({ message: "Internal Server error" });
   }
+});
+
+router.get("/userinfo", async (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).send({ message: "No token found" }); // 401 for unauthorized access
+  }
+
+  try {
+    const user = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
+
+    req.user = user;
+
+    res.status(200).send(req.user); // Send user info if token is valid
+  } catch (err) {
+    res.status(401).send({ message: "Invalid or expired token" }); // 401 for invalid/expired token
+  }
+});
+
+router.get("/signout", (req, res) => {
+  res.clearCookie("token", { httpOnly: true }); // Clear the token cookie
+  res.status(200).send({ message: "Signed out successfully" });
 });
 
 router.get("/users/:id/questions", async (req, res) => {

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import StyleSheet from "reactjs-stylesheet";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate(); // ✅ Moved to the top level of the component
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  // Handle Input Changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -17,23 +19,24 @@ const LoginPage = () => {
     }));
   };
 
-  // Handle Form Submission
+  const goToAbout = (link) => {
+    navigate(link); // ✅ Now using navigate correctly
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Make the POST request using axios
       const response = await axios.post(
         "http://localhost:8080/signin",
-        formData
+        formData,
+        { withCredentials: true }
       );
 
-      // Handle the response
       if (response.status === 200) {
         alert("Logged in successfully");
-        // Optionally redirect to another page or save token
+        goToAbout("/home"); // ✅ Redirects properly
       }
     } catch (error) {
-      // Handle errors
       if (error.response && error.response.data) {
         alert(error.response.data.message);
       } else {
@@ -50,8 +53,6 @@ const LoginPage = () => {
       </div>
       <div style={styles.rightContainer}>
         <h2 style={styles.formHeading}>Login</h2>
-
-        {/* Update the form to call handleChange and handleSubmit */}
         <form onSubmit={handleSubmit}>
           <input
             type="email"
@@ -73,7 +74,6 @@ const LoginPage = () => {
             Log In
           </button>
         </form>
-
         <p style={styles.signupLink}>
           Don't have an account? <a href="/signup">Sign Up</a>
         </p>

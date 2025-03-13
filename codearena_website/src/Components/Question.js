@@ -61,6 +61,7 @@ export default function Question({ questionName, questionLink, rank }) {
 
 const styles = Stylesheet.create({
   container: {
+    fontFamily: "Open Sans",
     display: "flex",
     width: "100%",
     marginTop: 20,

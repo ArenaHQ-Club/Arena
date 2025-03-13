@@ -20,7 +20,8 @@ export default function LearningPage() {
   const fetchDifficultyData = async (difficulty, selectedColor) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/difficulty/${difficulty}`
+        `http://localhost:8080/difficulty/${difficulty}`,
+        { withCredentials: true } // Ensure the authentication cookie is sent
       );
       setTopics(response.data);
       setColor(selectedColor);
@@ -33,7 +34,7 @@ export default function LearningPage() {
     <div style={styles.container}>
       <div style={styles.difficultyOptions}>
         <DifficultyLevel
-          img={new1}
+          img={Egg}
           text="Rookie Rumble"
           color={colors.rookie}
           onClick={() =>
@@ -41,7 +42,7 @@ export default function LearningPage() {
           }
         />
         <DifficultyLevel
-          img={new2}
+          img={Viking}
           text="Warrior's Way"
           color={colors.warrior}
           onClick={() =>
@@ -49,13 +50,21 @@ export default function LearningPage() {
           }
         />
         <DifficultyLevel
-          img={new3}
+          img={Veteran}
           text="Veteran's Vault"
           color={colors.veteran}
           onClick={() =>
             fetchDifficultyData(difficultyID.veterans_vault, colors.veteran)
           }
         />
+        {/* <DifficultyLevel
+          img={Viking}
+          text="Founders forge"
+          color={colors.warrior}
+          onClick={() =>
+            fetchDifficultyData(difficultyID.warriors_way, colors.warrior)
+          }
+        /> */}
         {/* <DifficultyLevel
           img={Business}
           text="Training Grounds"

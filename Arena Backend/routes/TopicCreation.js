@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Router } = require("express");
 const { Topics, validate } = require("../models/topics");
-
+const { cookieJWTAuth } = require("../middleware/CookieJWTAuth");
 router.post("/topics", async (req, res) => {
   try {
     const { error } = validate(req.body);
@@ -28,7 +28,7 @@ router.get("/topics", async (req, res) => {
   }
 });
 
-router.get("/topics/:id", async (req, res) => {
+router.get("/topics/:id", cookieJWTAuth, async (req, res) => {
   try {
     const topicId = req.params.id;
 
